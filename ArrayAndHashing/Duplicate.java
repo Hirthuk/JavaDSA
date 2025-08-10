@@ -2,7 +2,9 @@ package ArrayAndHashing;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Duplicate {
 	
@@ -43,13 +45,31 @@ public class Duplicate {
 		 return false;
 	}
 	
-//	Random Index taking and checking
+//	Random Index taking and checking - Critical flaws -Just try
 	public static boolean containsDuplicate3(int[] nums) {
 		Map<Integer,Integer> map = new HashMap<>(nums.length);
-		System.out.println(map.size());
-		System.out.println(nums.length);
-		return true;
+		while(!(nums.length == map.size())) {
+			int randomNumber = (int)Math.random()*(nums.length+1);
+			 if(map.containsValue(nums[randomNumber]) && !(map.containsKey(randomNumber))) {
+				 return true;
+			 }
+			 map.put(randomNumber, nums[randomNumber]);
+		}
+		return false;
 	}
+	
+//	Using set is the only best way because it will store only unique values
+	public static boolean containsDuplicate4(int[] nums) {
+		Set<Integer> set = new HashSet<>(nums.length);
+		
+		for(int num: nums) {
+			if(!set.add(num)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public static void main(String[] args) {
 	int[] nums = {1,2,1};
 	boolean answer = containsDuplicate3(nums);
