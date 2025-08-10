@@ -42,9 +42,17 @@ public class Duplicate {
 		 }
 		 return false;
 	}
+	
+//	Random Index taking and checking
+	public static boolean containsDuplicate3(int[] nums) {
+		Map<Integer,Integer> map = new HashMap<>(nums.length);
+		System.out.println(map.size());
+		System.out.println(nums.length);
+		return true;
+	}
 	public static void main(String[] args) {
 	int[] nums = {1,2,1};
-	boolean answer = containsDuplicate1(nums);
+	boolean answer = containsDuplicate3(nums);
 	System.out.println(answer);
 	}
 	
