@@ -34,15 +34,15 @@ public class Duplicate {
 	}
 	
 //	Sorted array Binary search - Worked but not efficient
-	public boolean containsDuplicate2(int[] nums) {
+	public static boolean containsDuplicate2(int[] nums) {
 		 Arrays.sort(nums);
-		 for(int i =0; i < nums.length; i++) {
-			 int searcIndex = Arrays.binarySearch(nums, nums[i]);
-			 if(searcIndex != i) {
-				 return true;
-			 }
-		 }
-		 return false;
+		 	for(int i=0; i< nums.length-1; i++) {
+		 		int searchIndex = Arrays.binarySearch(nums, nums[i]);
+		 		if(searchIndex != i) {
+		 			return true;
+		 		}
+		 	}
+				 return false;
 	}
 	
 //	Random Index taking and checking - Critical flaws -Just try
@@ -57,7 +57,7 @@ public class Duplicate {
 		}
 		return false;
 	}
-	
+
 //	Using set is the only best way because it will store only unique values
 	public static boolean containsDuplicate4(int[] nums) {
 		Set<Integer> set = new HashSet<>(nums.length);
@@ -72,7 +72,8 @@ public class Duplicate {
 	
 	public static void main(String[] args) {
 	int[] nums = {1,2,1};
-	boolean answer = containsDuplicate3(nums);
+	boolean answer = containsDuplicate2(nums);
+	System.out.println(nums.length);
 	System.out.println(answer);
 	}
 	

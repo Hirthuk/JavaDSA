@@ -7,7 +7,7 @@ A **HashMap** is a **key-value pair** data structure that provides **O(1)** aver
 - **Fast lookups** (O(1) average, O(n) worst-case)
 - **No duplicate keys** (each key maps to one value)
 - **Flexible** (keys & values can be any object type)
-- **Efficient** for frequency counting, caching, memoization
+- **Efficient** for frequency counting, caching, memorization
 
 ### **1.2 HashMap Declaration & Initialization**
 ```java
