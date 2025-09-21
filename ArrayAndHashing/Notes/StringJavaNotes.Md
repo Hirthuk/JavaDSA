@@ -183,6 +183,8 @@ String json = """
 
 ## **5. Common String Problems (Neetcode 150)**
 
+char[] charArray = str.charArray() convert the String to array of character in the string of Java
+
 ### **Easy Problems**
 1. **Valid Palindrome** (Two Pointers)
 2. **Reverse String** (In-place Array Manipulation)

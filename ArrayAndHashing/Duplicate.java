@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
+//static methods → belong to the class, can be called without creating an object.
+//non-static methods → belong to an object, you must create an instance to call them.
+//In Java, you cannot define a method inside another method.
 public class Duplicate {
 	
 	//Brute Force Method - Time Limit Exceeded
