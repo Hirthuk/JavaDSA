@@ -1,3 +1,4 @@
+````markdown
 # **Ultimate In-Depth Guide to Strings in Java for DSA**
 
 ## **1. String Fundamentals in Java**
@@ -19,9 +20,10 @@ String s2 = new String("Hello");
 // From char array
 char[] chars = {'H', 'e', 'l', 'l', 'o'};
 String s3 = new String(chars);
-```
+````
 
 ### **1.3 Important String Properties**
+
 ```java
 String str = "Java";
 
@@ -33,11 +35,15 @@ boolean isEmpty = str.isEmpty();  // false
 
 // Character access
 char firstChar = str.charAt(0);  // 'J'
+// charAt(i) gives the character at index i (0-based)
 ```
+
+---
 
 ## **2. String Operations & Methods**
 
 ### **2.1 Comparison Methods**
+
 ```java
 String a = "apple";
 String b = "Apple";
@@ -56,6 +62,7 @@ boolean sameRef = (a == b);  // false (checks memory address)
 ```
 
 ### **2.2 Searching in Strings**
+
 ```java
 String text = "Hello World";
 
@@ -74,6 +81,7 @@ boolean ends = text.endsWith("ld");  // true
 ```
 
 ### **2.3 String Manipulation**
+
 ```java
 String original = "  Java DSA  ";
 
@@ -93,6 +101,7 @@ String sub = original.substring(2, 6);  // "Java"
 ```
 
 ### **2.4 Splitting & Joining**
+
 ```java
 String csv = "apple,orange,banana";
 
@@ -103,9 +112,12 @@ String[] fruits = csv.split(",");  // ["apple", "orange", "banana"]
 String joined = String.join("; ", fruits);  // "apple; orange; banana"
 ```
 
+---
+
 ## **3. String Conversion & Parsing**
 
 ### **3.1 Primitive ↔ String Conversion**
+
 ```java
 // Number to String
 String numStr = String.valueOf(42);  // "42"
@@ -120,6 +132,7 @@ String fromChars = new String(chars);
 ```
 
 ### **3.2 StringBuilder & StringBuffer**
+
 ```java
 // StringBuilder (faster, not thread-safe)
 StringBuilder sb = new StringBuilder();
@@ -136,9 +149,12 @@ sbf.append("String");
 String safeResult = sbf.toString();
 ```
 
+---
+
 ## **4. Advanced String Techniques**
 
 ### **4.1 String Pool & Interning**
+
 ```java
 String a = "hello";  // String Pool
 String b = "hello";  // Reuses from Pool
@@ -153,6 +169,7 @@ System.out.println(a == d);  // true
 ```
 
 ### **4.2 Regular Expressions**
+
 ```java
 String text = "Email: test@example.com, Phone: 123-456-7890";
 
@@ -168,6 +185,7 @@ while (matcher.find()) {
 ```
 
 ### **4.3 String Formatting**
+
 ```java
 // Classic printf-style
 String formatted = String.format("Name: %s, Age: %d", "Alice", 25);
@@ -181,57 +199,83 @@ String json = """
     """;
 ```
 
+---
+
 ## **5. Common String Problems (Neetcode 150)**
 
-char[] charArray = str.charArray() convert the String to array of character in the string of Java
+### **5.1 Convert String to char array**
+
+```java
+char[] charArray = str.toCharArray();  // ['J','a','v','a']
+```
+
+### **5.2 Mapping letters to array index (a–z)**
+
+```java
+char ch = 't';
+int index = ch - 'a';  // 116 - 97 = 19
+// Maps 'a'..'z' -> 0..25
+```
+
+### **5.3 Example: Check anagram (`s = "til"`, `t = "lit"`)**
+
+```java
+int[] count = new int[26];  // all zeros by default
+
+String s = "til";
+String t = "lit";
+
+for (int i = 0; i < s.length(); i++) {
+    count[s.charAt(i) - 'a']++;  // increment s
+    count[t.charAt(i) - 'a']--;  // decrement t
+}
+
+// Check if all zeros
+boolean isAnagram = true;
+for (int c : count) {
+    if (c != 0) {
+        isAnagram = false;
+        break;
+    }
+}
+System.out.println(isAnagram);  // true
+```
+
+**Key:** `charAt(i)` gets the character at index `i`, `'char' - 'a'` maps to 0–25 for frequency arrays.
+
+---
 
 ### **Easy Problems**
-1. **Valid Palindrome** (Two Pointers)
-2. **Reverse String** (In-place Array Manipulation)
-3. **Valid Anagram** (Frequency Counting)
-4. **First Unique Character** (HashMap Approach)
+
+1. Valid Palindrome (Two Pointers)
+2. Reverse String (In-place Array Manipulation)
+3. Valid Anagram (Frequency Counting)
+4. First Unique Character (HashMap Approach)
 
 ### **Medium Problems**
-5. **Longest Substring Without Repeating Characters** (Sliding Window)
-6. **Longest Palindromic Substring** (Expand Around Center)
-7. **String to Integer (atoi)** (Edge Case Handling)
-8. **Group Anagrams** (HashMap + Sorting)
+
+5. Longest Substring Without Repeating Characters (Sliding Window)
+6. Longest Palindromic Substring (Expand Around Center)
+7. String to Integer (atoi) (Edge Case Handling)
+8. Group Anagrams (HashMap + Sorting)
 
 ### **Hard Problems**
-9. **Minimum Window Substring** (Sliding Window + HashMap)
-10. **Regular Expression Matching** (DP Solution)
-11. **Word Break** (Memoization/DP)
+
+9. Minimum Window Substring (Sliding Window + HashMap)
+10. Regular Expression Matching (DP Solution)
+11. Word Break (Memoization/DP)
+
+---
 
 ## **6. Time & Space Complexity**
 
-| Operation | Time Complexity | Space |
-|-----------|----------------|-------|
-| length() | O(1) | O(1) |
-| charAt() | O(1) | O(1) |
-| substring() | O(1)* | O(n) |
-| concat() | O(n) | O(n) |
-| compareTo() | O(n) | O(1) |
-| indexOf() | O(nm) | O(1) |
-| replace() | O(n) | O(n) |
-| split() | O(n) | O(n) |
-
-*Substring was O(1) in older Java versions, now typically O(n)
-
-## **7. Pro Tips for String Mastery**
-
-✅ **Prefer `StringBuilder` for concatenation in loops**  
-✅ **Understand immutability implications for performance**  
-✅ **Master sliding window techniques for substring problems**  
-✅ **Practice pattern matching with regular expressions**  
-✅ **Learn trie data structure for advanced string problems**  
-
-## **8. Next Steps**
-
-1. Solve **all Neetcode string problems**  
-2. Implement **common string algorithms**:
-   - KMP (Pattern Matching)
-   - Rabin-Karp (Rolling Hash)
-   - Manacher's (Palindrome)  
-3. Explore **Tries (Prefix Trees)** for word problems  
-
-Would you like a deep-dive on **string encoding (Unicode/UTF-8)** or **advanced pattern matching algorithms**? 🚀
+| Operation   | Time Complexity | Space |
+| ----------- | --------------- | ----- |
+| length()    | O(1)            | O(1)  |
+| charAt()    | O(1)            | O(1)  |
+| substring() | O(1)\*          | O(n)  |
+| concat()    | O(n)            | O(n)  |
+| compareTo() | O(n)            | O(1)  |
+| indexOf()   | O(nm)           | O(1)  |
+| replace()   | O(n)            | O(n)  |
+| split()     | O(n)            | O(n)  |
